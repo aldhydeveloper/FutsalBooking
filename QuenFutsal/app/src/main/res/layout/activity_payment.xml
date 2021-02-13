@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".PaymentActivity">
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/lblPay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnBack"
+        android:layout_centerHorizontal="true"
+        android:text="Pembayaran"
+        android:textColor="@color/light_black"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/lblpay2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lblPay"
+        android:layout_centerHorizontal="true"
+        android:text="Silahkan melakukan pembayaran"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:id="@+id/llUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lblpay2"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+
+        <!--nama -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama                   : "
+                android:textColor="@color/light_black"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="Nama"
+                android:textColor="@color/light_black"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <!--Alamat-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/llAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alamat                 : "
+                android:textColor="@color/light_black"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/tvAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="-5dp"
+                android:layout_toEndOf="@id/llAddress"
+                android:gravity="end"
+                android:hint="Alamat"
+                android:padding="5dp"
+                android:textColor="@color/light_black" />
+
+            <EditText
+                android:id="@+id/tvCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_toEndOf="@id/llAddress"
+                android:gravity="end"
+                android:layout_below="@id/tvAddress"
+                android:hint="Kota"
+                android:padding="5dp"
+                android:textColor="@color/light_black" />
+
+            <EditText
+                android:id="@+id/tvPostalCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="4dp"
+                android:layout_toEndOf="@id/llAddress"
+                android:gravity="end"
+                android:layout_marginTop="4dp"
+                android:layout_below="@id/tvCity"
+                android:hint="Kode POS"
+                android:padding="5dp"
+                android:textColor="@color/light_black" />
+
+        </RelativeLayout>
+
+        <!--No. Telpon-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No.Telpon           : "
+                android:textColor="@color/light_black"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:id="@+id/tvPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="No.Telpon"
+                android:textColor="@color/light_black"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@id/llUser"
+        android:layout_marginTop="20dp"
+        android:background="@color/grey"/>
+
+    <LinearLayout
+        android:id="@+id/llBooking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/llUser"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
+
+        <!--nama lapangan -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Lapangan : "
+                android:textColor="@color/light_black"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:id="@+id/tvLapanganName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="Lapangan"
+                android:textColor="@color/light_black"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <!--Tempat-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tempat                 : "
+                android:textColor="@color/light_black"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:id="@+id/tvPlace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="Tempat"
+                android:textColor="@color/light_black"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <!--Alamat-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/lblALAMAT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alamat                  : "
+                android:textColor="@color/light_black"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:id="@+id/tvPlaceAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@id/lblALAMAT"
+                android:text="Alamat"
+                android:gravity="end"
+                android:textColor="@color/light_black"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <!--Jam-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tanggal, Jam      : "
+                android:textColor="@color/light_black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="dd/mm/yyyy hh:mm"
+                android:textColor="@color/light_black"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <!--Harga-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Harga                    : "
+                android:textColor="@color/light_black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/lblRp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp.   "
+                android:layout_toStartOf="@id/tvPriceTotal"
+                android:textColor="@color/light_black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvPriceTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="XXXXXXXX"
+                android:textColor="@color/light_black"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vBottom"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@id/llBooking"
+        android:background="@color/grey"
+        android:layout_marginTop="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/vBottom"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <!--nama lapangan -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Extra Time           :"
+                android:textColor="@color/light_black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvExTime"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_marginEnd="4dp"
+                android:layout_toStartOf="@id/lblJam"
+                android:textColor="@color/light_black"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/lblJam"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="Jam"
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/light_black"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+        <!--Harga-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TOTAL                  : "
+                android:textStyle="bold"
+                android:textColor="@color/light_black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/lbl2Rp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp.   "
+                android:textStyle="bold"
+                android:layout_toStartOf="@id/tvTotal"
+                android:textColor="@color/light_black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="XXXXXXXX"
+                android:textStyle="bold"
+                android:textColor="@color/light_black"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/btnPayCOD"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="@color/light_black"
+            android:text="COD"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnPayOnline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="#2CFF50"
+            android:text="Bayar Online"
+            android:textAllCaps="false"
+            android:textColor="@color/light_black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llEmpty"
+        android:layout_width="match_parent"
+        android:layout_below="@id/btnBack"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:text="ANDA BELUM MELAKUKAN BOOKING"/>
+    </LinearLayout>
+</RelativeLayout>

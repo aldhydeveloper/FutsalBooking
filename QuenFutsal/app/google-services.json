@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "416963934950",
+    "firebase_url": "https://quenfutsalbooking.firebaseio.com",
+    "project_id": "quenfutsalbooking",
+    "storage_bucket": "quenfutsalbooking.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:416963934950:android:0f70bbb10ee0010a5f1927",
+        "android_client_info": {
+          "package_name": "com.ns.quenfutsalbooking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "416963934950-bl72m57ue25cr4lds9vrqfe5atb5k07m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2UcHACOgeu3jyFJP-Q1wP98c5edLRcno"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "416963934950-bl72m57ue25cr4lds9vrqfe5atb5k07m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

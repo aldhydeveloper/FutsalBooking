@@ -1,0 +1,74 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.ns.quenfutsalbooking"
+        minSdkVersion 22
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    flavorDimensions "mode"
+    productFlavors {
+//        sandbox {
+//            buildConfigField "String", "BASE_URL", "\"http://www.instagram.com/kopling_kendari/\""
+//            buildConfigField "String", "CLIENT_KEY", "\"SB-Mid-client-NNwWwHN8Vn9R0TiX\""
+//        }
+
+        production {
+            buildConfigField "String", "BASE_URL", "\"https://kopikeliling.herokuapp.com/index.php/\""
+            buildConfigField "String", "CLIENT_KEY", "\"Mid-client-Vu31erBpWiv7D463\""
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'com.google.firebase:firebase-firestore:22.0.2'
+    implementation 'com.google.firebase:firebase-auth:20.0.2'
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+
+//    sandboxImplementation 'com.midtrans:uikit:1.21.2' // change the version to latest one
+    productionImplementation 'com.midtrans:uikit:1.26.0' // change the version to latest one
+
+    //Costume Library
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'com.github.VishnuSivadasVS:Advanced-HttpURLConnection:1.2'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+    implementation 'com.ss.bannerslider:bannerslider:2.0.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.shuhart.stepview:stepview:1.5.1'
+    implementation 'com.jaredrummler:material-spinner:1.3.1'
+    implementation 'com.github.d-max:spots-dialog:1.1@aar'
+    implementation 'devs.mulham.horizontalcalendar:horizontalcalendar:1.3.4'
+    implementation 'com.karumi:dexter:6.2.2'
+    implementation 'io.paperdb:paperdb:2.6'
+}
