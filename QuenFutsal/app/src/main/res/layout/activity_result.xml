@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".ResultActivity">
+
+    <ImageView
+        android:id="@+id/btnBackResult"
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_back" />
+
+    <ImageView
+        android:id="@+id/ivResultPlace"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@id/btnBackResult"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitXY" />
+
+    <LinearLayout
+        android:id="@+id/llTitleplace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivResultPlace"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toStartOf="@id/btnNavResult"
+        android:background="@color/light_black"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitleResultPlace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Title"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvAddressResultPlace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Title"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btnNavResult"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/ivResultPlace"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_navigation" />
+
+    <LinearLayout
+        android:padding="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/llTitleplace"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_spinner"
+        android:orientation="vertical">
+
+        <!--Daerah-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daerah               : "
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tvDaerah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daerah"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <!--Jenis-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tipe Tempat    : "
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tvJenis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tipe Tempat"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <!--Lantai-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lantai                : "
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tvLantai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lantai"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <!--Bola-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sedia Bola        : "
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tvBola"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bola"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <!--Bola-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Harga                 : "
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tvHarga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Harga"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

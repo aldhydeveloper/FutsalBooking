@@ -3,8 +3,10 @@
     package="com.ns.quenfutsalbooking">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="false"
@@ -13,6 +15,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ResultActivity"></activity>
+        <activity android:name=".RecommendationActivity" />
+        <activity android:name=".HistoryActivity" />
+        <activity android:name=".CartsActivity" />
+        <activity android:name=".DetailTempatActivity" />
+        <activity android:name=".MapsActivity" />
         <activity android:name=".PaymentActivity" />
         <activity android:name=".BookingActivity" />
         <activity android:name=".LoadingScreen">
@@ -26,6 +34,13 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".SplashScreenActivity" />
         <activity android:name=".MainActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA8znh58wHcr9peDQvszue35BDPhujFmUg" />
     </application>
 
 </manifest>

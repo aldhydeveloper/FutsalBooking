@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".RecommendationActivity">
+
+
+    <ImageView
+        android:id="@+id/btnBackRec"
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/lblPay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnBackRec"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Rekomendasi"
+        android:textColor="@color/light_black"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/lblpay2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lblPay"
+        android:layout_centerHorizontal="true"
+        android:text="Silahkan pilih kireteria tempat dan lapangan futsal anda"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/llPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tempat"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/lblpay2"
+        android:textColor="@color/light_black"
+        android:textSize="20sp" />
+    <View
+        android:id="@+id/vTop"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@id/llPlace"
+        android:layout_marginTop="5dp"
+        android:background="@color/grey"/>
+
+    <LinearLayout
+        android:id="@+id/llPlaceRec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/vTop">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvPlaceRec"
+            android:padding="12dp"
+            android:text="Pilih Daerah"
+            android:gravity="center_vertical"
+            android:drawableEnd="@drawable/ic_arrow"
+            android:background="@drawable/bg_spinner"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <CheckBox
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Outdoor"
+                android:layout_marginEnd="4dp"
+                android:background="@color/white"
+                android:id="@+id/chOutdoor"/>
+
+            <CheckBox
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginStart="4dp"
+                android:text="Indoor"
+                android:background="@color/white"
+                android:id="@+id/chIndoor"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/llLapangan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lapangan"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/llPlaceRec"
+        android:textColor="@color/light_black"
+        android:textSize="20sp" />
+    <View
+        android:id="@+id/vBottom"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@id/llLapangan"
+        android:layout_marginTop="5dp"
+        android:background="@color/grey"/>
+
+    <LinearLayout
+        android:id="@+id/llLapangRec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/vBottom">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvLantaiRec"
+            android:padding="12dp"
+            android:text="Tipe Lantai"
+            android:gravity="center_vertical"
+            android:drawableEnd="@drawable/ic_arrow"
+            android:background="@drawable/bg_spinner"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sedia Bola"
+                android:textStyle="bold"
+                android:gravity="center_vertical"/>
+
+            <RadioGroup
+                android:id="@+id/rdGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="Sedia"
+                    android:id="@+id/rb1"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="Tidak"
+                    android:id="@+id/rb2"/>
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvPriceRec"
+            android:padding="12dp"
+            android:layout_marginTop="8dp"
+            android:text="Perkiraan Harga"
+            android:gravity="center_vertical"
+            android:drawableEnd="@drawable/ic_arrow"
+            android:background="@drawable/bg_spinner"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/light_black"
+        android:text="Lihat Rekomendasi"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:id="@+id/btnRec"/>
+
+</RelativeLayout>

@@ -1,35 +1,33 @@
 package com.ns.quenfutsalbooking;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.midtrans.sdk.corekit.core.MidtransSDK;
-import com.midtrans.sdk.corekit.core.PaymentMethod;
 import com.midtrans.sdk.corekit.core.TransactionRequest;
 import com.midtrans.sdk.corekit.core.themes.CustomColorTheme;
-import com.midtrans.sdk.corekit.models.BillInfoModel;
-import com.midtrans.sdk.corekit.models.BillingAddress;
 import com.midtrans.sdk.corekit.models.CustomerDetails;
 import com.midtrans.sdk.corekit.models.ItemDetails;
-import com.midtrans.sdk.corekit.models.ShippingAddress;
 import com.midtrans.sdk.corekit.models.snap.TransactionResult;
 import com.midtrans.sdk.uikit.SdkUIFlowBuilder;
 import com.ns.quenfutsalbooking.Common.Common;
 import com.ns.quenfutsalbooking.Interface.IBookingInfoLoadListener;
 import com.ns.quenfutsalbooking.Model.BookingInformation;
+import com.ns.quenfutsalbooking.Model.Cart;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -38,11 +36,9 @@ import dmax.dialog.SpotsDialog;
 
 public class PaymentActivity extends AppCompatActivity implements IBookingInfoLoadListener {
 
-    ImageView btnBack,btnPlus,btnMinus;
-    TextView tvName,tvPhone,tvLapanganName,tvPlace,
-            tvPlaceAddress,tvTime,tvPrice,tvExTime,tvTotal;
-    EditText tvAddress,
-            tvCity,tvPostalCode;
+    ImageView btnBack;
+    TextView tvName, tvPhone, tvLapanganName, tvPlace,
+            tvPlaceAddress, tvTime, tvPrice, tvExTime, tvTotal;
     Button btnPayCOD, btnPayOnline;
     LinearLayout llEmpty;
 
@@ -50,10 +46,11 @@ public class PaymentActivity extends AppCompatActivity implements IBookingInfoLo
 
     IBookingInfoLoadListener iBookingInfoLoadListener;
 
+    DocumentReference cartBooking;
+
     int totalExTime = 0, price = 0, totalPrice = 0;
     String firstTotal;
-    String finalTotalExTime;
-    String email,idTransaction;
+    String email, idTransaction;
 
 
     @Override
@@ -63,11 +60,8 @@ public class PaymentActivity extends AppCompatActivity implements IBookingInfoLo
 
         btnBack = findViewById(R.id.btnBack);
         tvName = findViewById(R.id.tvName);
-        tvAddress = findViewById(R.id.tvAddress);
         tvPhone = findViewById(R.id.tvPhone);
         tvPlace = findViewById(R.id.tvPlace);
-        tvCity = findViewById(R.id.tvCity);
-        tvPostalCode = findViewById(R.id.tvPostalCode);
         tvLapanganName = findViewById(R.id.tvLapanganName);
         tvPlaceAddress = findViewById(R.id.tvPlaceAddress);
         tvTime = findViewById(R.id.tvTime);
@@ -81,22 +75,18 @@ public class PaymentActivity extends AppCompatActivity implements IBookingInfoLo
         dialog = new SpotsDialog.Builder().setContext(this).setCancelable(false).build();
         dialog.show();
 
+        cartBooking = FirebaseFirestore.getInstance()
+                .collection("carts")
+                .document(Common.currentUser);
+
         iBookingInfoLoadListener = this;
 
 
         btnBack.setOnClickListener(v ->
                 super.onBackPressed());
 
-        btnPayOnline.setOnClickListener(v ->{
-                    String address = tvAddress.getText().toString();
-                    String city = tvCity.getText().toString();
-                    String pos = tvPostalCode.getText().toString();
-                    if (address.isEmpty() && city.isEmpty() && pos.isEmpty()){
-                        Toast.makeText(this, "Lengkapi alamat anda!", Toast.LENGTH_SHORT).show();
-                    }else{
-                        paymentOnline();
-                    }
-                });
+        btnPayOnline.setOnClickListener(v ->
+                paymentOnline());
 
         btnPayCOD.setOnClickListener(v ->
                 paymentCOD());
@@ -117,6 +107,20 @@ public class PaymentActivity extends AppCompatActivity implements IBookingInfoLo
                         switch (transactionResult.getStatus()) {
                             case TransactionResult.STATUS_SUCCESS:
                                 Toast.makeText(PaymentActivity.this, "Transaction Finished ID :" + transactionResult.getResponse().getTransactionId(), Toast.LENGTH_SHORT).show();
+                                String addIdCart = Common.currentUser;
+                                String name = tvName.getText().toString();
+                                String phone = tvPhone.getText().toString();
+                                String place = tvPlace.getText().toString();
+                                String lapangan = tvLapanganName.getText().toString();
+                                String price = tvTotal.getText().toString();
+                                String time = tvTime.getText().toString();
+                                String exTime = tvExTime.getText().toString();
+                                Cart cars = new Cart(addIdCart, name, phone, place, lapangan, price, time, exTime, "Lunas");
+                                cartBooking.set(cars).addOnSuccessListener(documentReference -> {
+                                    startActivity(new Intent(PaymentActivity.this, MainActivity.class));
+                                    Toast.makeText(PaymentActivity.this, "Terimakasih, Silahkan Cek Cart Anda", Toast.LENGTH_SHORT).show();
+                                }).addOnFailureListener(e ->
+                                        Toast.makeText(PaymentActivity.this, "Error : " + e.getMessage(), Toast.LENGTH_SHORT).show());
                                 break;
                             case TransactionResult.STATUS_PENDING:
                                 Toast.makeText(PaymentActivity.this, "Transaction Pending ID :" + transactionResult.getResponse().getTransactionId(), Toast.LENGTH_SHORT).show();
@@ -136,23 +140,23 @@ public class PaymentActivity extends AppCompatActivity implements IBookingInfoLo
                         }
                     }
                 })
-                .setMerchantBaseUrl("https://kopikeliling.herokuapp.com/index.php/")
+                .setMerchantBaseUrl("https://futsallbooking.herokuapp.com/index.php/")
                 .enableLog(true)
                 .setColorTheme(new CustomColorTheme("#FFE51255", "#B61548", "#FFE51255"))
                 .buildSDK();
     }
 
     private void initView() {
-        if (Common.currentBooking != null){
+        if (Common.currentBooking != null) {
             loadUserInformationBooking();
-        }else{
+        } else {
 
         }
     }
 
     private void loadUserInformationBooking() {
 
-        if (Common.currentBooking != null){
+        if (Common.currentBooking != null) {
             llEmpty.setVisibility(View.GONE);
             CollectionReference userBooking = FirebaseFirestore.getInstance()
                     .collection("users")
@@ -161,29 +165,26 @@ public class PaymentActivity extends AppCompatActivity implements IBookingInfoLo
 
             //get current date
             Calendar calendar = Calendar.getInstance();
-            calendar.add(Calendar.DATE,0);
-            calendar.set(Calendar.HOUR_OF_DAY,0);
-            calendar.add(Calendar.MINUTE,0);
+            calendar.add(Calendar.DATE, 0);
+            calendar.set(Calendar.HOUR_OF_DAY, 0);
+            calendar.add(Calendar.MINUTE, 0);
 
             Timestamp toDayTimeStamp = new Timestamp(calendar.getTime());
 
             userBooking
-                    .whereGreaterThanOrEqualTo("timestamp",toDayTimeStamp)
-                    .whereEqualTo("done",false)
+                    .whereGreaterThanOrEqualTo("timestamp", toDayTimeStamp)
+                    .whereEqualTo("done", false)
                     .get()
                     .addOnCompleteListener(task -> {
 
-                        if (task.isSuccessful())
-                        {
-                            if (!task.getResult().isEmpty())
-                            {
-                                for (QueryDocumentSnapshot queryDocumentSnapshot:task.getResult())
-                                {
+                        if (task.isSuccessful()) {
+                            if (!task.getResult().isEmpty()) {
+                                for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
                                     BookingInformation bookingInformation = queryDocumentSnapshot.toObject(BookingInformation.class);
-                                    iBookingInfoLoadListener.onBookingInfoLoadSuccess(bookingInformation,queryDocumentSnapshot.getId());
+                                    iBookingInfoLoadListener.onBookingInfoLoadSuccess(bookingInformation, queryDocumentSnapshot.getId());
                                     break;
                                 }
-                            }else
+                            } else
                                 iBookingInfoLoadListener.onBookingInfoLoadEmpty();
                         }
 
@@ -192,66 +193,61 @@ public class PaymentActivity extends AppCompatActivity implements IBookingInfoLo
             });
 
             dialog.dismiss();
-        }else{
+        } else {
             llEmpty.setVisibility(View.VISIBLE);
         }
 
     }
 
     private void paymentCOD() {
+        String addIdCart = Common.currentUser;
+        String name = tvName.getText().toString();
+        String phone = tvPhone.getText().toString();
+        String place = tvPlace.getText().toString();
+        String lapangan = tvLapanganName.getText().toString();
+        String price = tvTotal.getText().toString();
+        String time = tvTime.getText().toString();
+        String exTime = tvExTime.getText().toString();
+        Cart cars = new Cart(addIdCart, name, phone, place, lapangan, price, time, exTime, "Pending");
+        cartBooking.set(cars).addOnSuccessListener(documentReference -> {
+            startActivity(new Intent(PaymentActivity.this, MainActivity.class));
+            Toast.makeText(PaymentActivity.this, "Terimakasih, Silahkan Cek Cart Anda", Toast.LENGTH_SHORT).show();
+        }).addOnFailureListener(e ->
+                Toast.makeText(PaymentActivity.this, "Error : " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
     private void paymentOnline() {
-        MidtransSDK.getInstance().setTransactionRequest(transactionRequest());
-        MidtransSDK.getInstance().startPaymentUiFlow(this, PaymentMethod.GO_PAY);
+        String total = tvTotal.getText().toString();
+        int totalPay = Integer.parseInt(total);
+        String lapangan = tvLapanganName.getText().toString();
+        MidtransSDK.getInstance().setTransactionRequest(transactionRequest(idTransaction, totalPay, 1, lapangan));
+        MidtransSDK.getInstance().startPaymentUiFlow(this);
     }
 
-    public TransactionRequest transactionRequest() {
+    public TransactionRequest transactionRequest(String id, int total, int qty, String name) {
 
         String fullName = tvName.getText().toString();
         String noHp = tvPhone.getText().toString();
-        String address = tvAddress.getText().toString();
-        String city = tvCity.getText().toString();
-        String postalCode = tvPostalCode.getText().toString();
-        String total = tvTotal.getText().toString();
-        String lapangan = tvLapanganName.getText().toString();
-
-        int totalPay = Integer.parseInt(total);
-
         CustomerDetails cd = new CustomerDetails();
         cd.setFirstName(fullName);
-        cd.setLastName(" ");
         cd.setPhone(noHp);
-        cd.setEmail("email");
+        cd.setEmail("admin@gmail.com");
 
-        ShippingAddress shippingAddress = new ShippingAddress();
-        shippingAddress.setAddress(address);
-        shippingAddress.setCity(city);
-        shippingAddress.setPostalCode(postalCode);
-        cd.setShippingAddress(shippingAddress);
-
-        BillingAddress billingAddress = new BillingAddress();
-        billingAddress.setAddress(address);
-        billingAddress.setCity(city);
-        billingAddress.setPostalCode(postalCode);
-        cd.setBillingAddress(billingAddress);
-
-        TransactionRequest request = new TransactionRequest(System.currentTimeMillis()+"",totalPay);
+        TransactionRequest request = new TransactionRequest(System.currentTimeMillis() + "", total);
         request.setCustomerDetails(cd);
 
-        ItemDetails itemDetails = new ItemDetails(idTransaction,totalPay,1, lapangan);
+        ItemDetails itemDetails = new ItemDetails(id, total, qty, name);
         ArrayList<ItemDetails> details = new ArrayList<>();
         details.add(itemDetails);
-        BillInfoModel billInfoModel = new BillInfoModel(idTransaction,lapangan);
 
-        request.setBillInfoModel(billInfoModel);
         request.setItemDetails(details);
 
         return request;
     }
 
     @Override
-    public void onBackPressed() {    }
+    public void onBackPressed() {
+    }
 
     @Override
     public void onBookingInfoLoadEmpty() {
@@ -274,15 +270,14 @@ public class PaymentActivity extends AppCompatActivity implements IBookingInfoLo
         firstTotal = tvPrice.getText().toString();
         idTransaction = bookingId;
         email = bookingInformation.getCostumerEmail();
-        if (tvExTime.getText().equals("0")){
+        if (tvExTime.getText().equals("0")) {
             tvTotal.setText(firstTotal);
-        }else {
+        } else {
             totalExTime = Integer.parseInt(bookingInformation.getExtraTime()) + 1;
             price = Integer.parseInt(bookingInformation.getHarga());
             totalPrice = totalExTime * price;
             tvTotal.setText(String.format("%d", totalPrice));
         }
-
 
 
     }

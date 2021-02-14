@@ -50,6 +50,7 @@ import com.ns.quenfutsalbooking.Interface.IBookingInformationChangeListener;
 import com.ns.quenfutsalbooking.Interface.ILapanganInterface;
 import com.ns.quenfutsalbooking.Model.Banner;
 import com.ns.quenfutsalbooking.Model.BookingInformation;
+import com.ns.quenfutsalbooking.Model.Cart;
 import com.ns.quenfutsalbooking.Service.PicassoLoadingService;
 
 import java.util.ArrayList;
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements IBannerLoadListen
 
     IBookingInfoLoadListener iBookingInfoLoadListener;
 
-    CardView card_booking, card_booking_info;
+    CardView card_booking, card_view_cart, card_booking_info,card_view_rec,card_view_pay;
 
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -114,16 +115,14 @@ public class MainActivity extends AppCompatActivity implements IBannerLoadListen
         }).check();
 
 
-
-//        btn_logout = findViewById(R.id.btn_logout);
-//        btn_verifikasi = findViewById(R.id.btn_verifikasi);
-//        txt_verifikasi = findViewById(R.id.txt_verifikasi);
-
         txt_fullname = findViewById(R.id.txt_fullname);
         txt_noHp = findViewById(R.id.txt_noHp);
         banner_slider = findViewById(R.id.banner_slider);
         recyler_lapangan = findViewById(R.id.recycler_banner);
         card_booking = findViewById(R.id.card_view_booking);
+        card_view_cart = findViewById(R.id.card_view_cart);
+        card_view_rec = findViewById(R.id.card_view_rec);
+        card_view_pay = findViewById(R.id.card_view_pay);
         btnLogout = findViewById(R.id.btnLogout);
 
         dialog = new SpotsDialog.Builder().setContext(this).setCancelable(false).build();
@@ -160,6 +159,15 @@ public class MainActivity extends AppCompatActivity implements IBannerLoadListen
         card_booking.setOnClickListener(v ->
                 startActivity(new Intent(this,BookingActivity.class)));
 
+        card_view_cart.setOnClickListener(v ->
+                checkCart());
+
+        card_view_pay.setOnClickListener(v ->
+                checkPay());
+
+        card_view_rec.setOnClickListener(v ->
+                startActivity(new Intent(this,RecommendationActivity.class)));
+
         btnDeleteBooking.setOnClickListener(v ->
                 deleteBooking(false));
 
@@ -195,6 +203,50 @@ public class MainActivity extends AppCompatActivity implements IBannerLoadListen
             finish();
         });
 
+    }
+
+    private void checkPay() {
+        DocumentReference cartBooking = FirebaseFirestore.getInstance()
+                .collection("carts")
+                .document(Common.currentUser);
+        cartBooking.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot documentSnapshot = task.getResult();
+                Cart carts = documentSnapshot.toObject(Cart.class);
+                String status = carts.getStatus();
+                if (status.equals("Lunas")){
+                    startActivity(new Intent(this,HistoryActivity.class));
+                }else{
+                    AlertDialog.Builder cartDialog = new AlertDialog.Builder(this)
+                            .setCancelable(false)
+                            .setTitle("Tidak ada history pembayaran")
+                            .setNegativeButton("Oke", (dialog, which) -> dialog.dismiss());
+                    cartDialog.show();
+                }
+            }
+        });
+    }
+
+    private void checkCart() {
+        DocumentReference cartBooking = FirebaseFirestore.getInstance()
+                .collection("carts")
+                .document(Common.currentUser);
+        cartBooking.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot documentSnapshot = task.getResult();
+                Cart carts = documentSnapshot.toObject(Cart.class);
+                String status = carts.getStatus();
+                if (status.equals("Pending")){
+                    startActivity(new Intent(this,CartsActivity.class));
+                }else{
+                    AlertDialog.Builder cartDialog = new AlertDialog.Builder(this)
+                            .setCancelable(false)
+                            .setTitle("Tidak ada pembayaran yang tertunda")
+                            .setNegativeButton("Oke", (dialog, which) -> dialog.dismiss());
+                    cartDialog.show();
+                }
+            }
+        });
     }
 
     private void changeBookingFromUser() {
@@ -397,7 +449,22 @@ public class MainActivity extends AppCompatActivity implements IBannerLoadListen
                         Calendar.getInstance().getTimeInMillis(),0).toString();
         txt_jam_remain.setText(dateRemain);
 
-        card_booking_info.setVisibility(View.VISIBLE);
+        DocumentReference cartBooking = FirebaseFirestore.getInstance()
+                .collection("carts")
+                .document(Common.currentUser);
+        cartBooking.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()){
+                    DocumentSnapshot snapshot = task.getResult();
+                    if (snapshot.exists()){
+                        card_booking_info.setVisibility(View.GONE);
+                    }else {
+                        card_booking_info.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+        });
     }
 
     @Override

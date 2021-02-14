@@ -126,7 +126,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/card_view_history"
+                    android:id="@+id/card_view_pay"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -139,7 +139,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:src="@drawable/ic_history"
+                            android:src="@drawable/ic_bill"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_gravity="center_horizontal"/>
@@ -147,7 +147,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="History"
+                            android:text="Bill Pay"
                             android:textStyle="bold"
                             android:layout_gravity="center_horizontal"/>
 
@@ -156,7 +156,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/card_view_notify"
+                    android:id="@+id/card_view_rec"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -168,16 +168,19 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="45dp"
+                            android:layout_height="40dp"
                             android:layout_gravity="center_horizontal"
-                            android:src="@drawable/ic_notifications" />
+                            android:src="@drawable/ball" />
 
                         <TextView
+                            android:paddingEnd="1dp"
+                            android:paddingStart="1dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:text="Notification"
+                            android:text="Rekomendasi"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -394,16 +397,23 @@
         android:layout_alignParentBottom="true"
         android:id="@+id/rl1"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
         android:background="@color/light_black">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="QUEN FUTSAL BOOKING"
+            android:textColor="@color/white"/>
 
         <ImageView
             android:id="@+id/btnLogout"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="10dp"
             android:src="@drawable/ic_logout"/>
     </RelativeLayout>
 

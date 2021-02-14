@@ -1,263 +1,269 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
     android:background="@color/grey">
-
-    <ImageView
-        android:layout_width="300dp"
-        android:layout_height="100dp"
-        android:src="@drawable/konfirmasi"
-        android:layout_gravity="center_horizontal"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp"
-        android:background="@drawable/bg_bill">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Terimakasih Telah Melakukan Booking"
-            android:gravity="center_horizontal"
-            android:textStyle="bold"
-            android:textSize="18sp"/>
-
-        <TextView
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Silahkan Konfirmasi Pesanan Booking Anda !"
-            android:gravity="center_horizontal"
-            android:textStyle="italic"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/black"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Informasi Booking"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center_vertical"/>
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:src="@drawable/konfirmasi"
+            android:layout_gravity="center_horizontal"/>
 
         <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_event"/>
-
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:background="@drawable/bg_bill">
 
             <TextView
-                android:id="@+id/txt_booking_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Terimakasih Telah Melakukan Booking"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Silahkan Konfirmasi Pesanan Booking Anda !"
+                android:gravity="center_horizontal"
+                android:textStyle="italic"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/black"/>
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="09:00 - 10:00 tanggal 09/12/20"
+                android:text="Informasi Booking"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_gravity="center_vertical"/>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_soccer"/>
-
-            <TextView
-                android:id="@+id/txt_booking_lapangan"
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lapangan 1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_event"/>
+
+
+                <TextView
+                    android:id="@+id/txt_booking_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="09:00 - 10:00 tanggal 09/12/20"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_soccer"/>
+
+                <TextView
+                    android:id="@+id/txt_booking_lapangan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lapangan 1"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_money"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp. "
+                    android:textSize="18sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/tvPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Harga"
+                    android:textSize="18sp"
+                    android:layout_marginStart="4dp"
+                    android:layout_gravity="center_vertical"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp">
+
+                <ImageView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_extra_time"/>
+
+                <ImageButton
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/ic_add"
+                    android:layout_marginStart="10dp"
+                    android:id="@+id/btnPlus"/>
+
+                <TextView
+                    android:id="@+id/tvExtraTime"
+                    android:layout_width="30dp"
+                    android:gravity="center"
+                    android:textColor="@color/light_black"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:background="@drawable/bg_edit_text"
+                    android:textSize="18sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="center_vertical"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/light_black"
+                    android:layout_height="wrap_content"
+                    android:text=" Jam "
+                    android:background="@drawable/bg_edit_text"
+                    android:textSize="18sp"
+                    android:layout_gravity="center_vertical"/>
+
+                <ImageButton
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/ic_minus"
+                    android:layout_marginStart="10dp"
+                    android:id="@+id/btnMinus"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/black"/>
+
+            <TextView
+                android:id="@+id/txt_booking_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="YPKP FUTSAL"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_gravity="center_vertical"/>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_place"/>
+
+                <TextView
+                    android:id="@+id/txt_booking_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jl. Abcdefghijklmnopqrstuvwxyz"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_time"/>
+
+                <TextView
+                    android:id="@+id/txt_place_clock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="07:00 - 22:00"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_money"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rp. "
-                android:textSize="18sp"
-                android:layout_marginStart="10dp"
-                android:layout_gravity="center_vertical"/>
-
-            <TextView
-                android:id="@+id/tvPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Harga"
-                android:textSize="18sp"
-                android:layout_marginStart="4dp"
-                android:layout_gravity="center_vertical"/>
-
-        </LinearLayout>
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp">
-
-            <ImageView
-                android:layout_gravity="center_vertical"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_extra_time"/>
-
-            <ImageButton
-                android:layout_width="30dp"
-                android:layout_height="35dp"
-                android:src="@drawable/ic_add"
-                android:layout_marginStart="10dp"
-                android:id="@+id/btnPlus"/>
-
-            <TextView
-                android:id="@+id/tvExtraTime"
-                android:layout_width="30dp"
-                android:gravity="center"
-                android:textColor="@color/light_black"
+            android:layout_height="match_parent"
+            android:padding="20dp"
+            android:background="@color/white">
+            <Button
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="0"
-                android:background="@drawable/bg_edit_text"
-                android:textSize="18sp"
-                android:layout_marginStart="10dp"
-                android:layout_gravity="center_vertical"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/light_black"
-                android:layout_height="wrap_content"
-                android:text=" Jam "
-                android:background="@drawable/bg_edit_text"
-                android:textSize="18sp"
-                android:layout_gravity="center_vertical"/>
-
-            <ImageButton
-                android:layout_width="30dp"
-                android:layout_height="35dp"
-                android:src="@drawable/ic_minus"
-                android:layout_marginStart="10dp"
-                android:id="@+id/btnMinus"/>
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/black"/>
-
-        <TextView
-            android:id="@+id/txt_booking_place"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="YPKP FUTSAL"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center_vertical"/>
-
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_place"/>
-
-            <TextView
-                android:id="@+id/txt_booking_address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Jl. Abcdefghijklmnopqrstuvwxyz"
-                android:textSize="18sp"
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="center_vertical"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_time"/>
-
-            <TextView
-                android:id="@+id/txt_place_clock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="07:00 - 22:00"
-                android:textSize="18sp"
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="center_vertical"/>
-
-        </LinearLayout>
-
+                android:id="@+id/btn_confirm"
+                android:layout_marginTop="20dp"
+                android:text="KONFIRMASI"
+                android:textColor="@color/white"
+                android:background="@drawable/btn_signup"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="20dp"
-        android:background="@color/white">
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_confirm"
-            android:layout_marginTop="20dp"
-            android:text="KONFIRMASI"
-            android:textColor="@color/white"
-            android:background="@drawable/btn_signup"
-            android:layout_alignParentBottom="true"/>
-    </RelativeLayout>
 
 
-</LinearLayout>
+
+</ScrollView>

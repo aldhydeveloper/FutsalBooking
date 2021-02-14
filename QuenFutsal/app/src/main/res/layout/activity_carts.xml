@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context=".PaymentActivity">
+    tools:context=".CartsActivity">
 
     <ImageView
-        android:id="@+id/btnBack"
+        android:id="@+id/btnBackCart"
         android:layout_width="40dp"
         android:layout_height="20dp"
         android:src="@drawable/ic_back" />
@@ -17,10 +17,10 @@
         android:id="@+id/lblPay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btnBack"
+        android:layout_below="@id/btnBackCart"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="Pembayaran"
+        android:text="Tagihan"
         android:textColor="@color/light_black"
         android:textSize="28sp"
         android:textStyle="bold" />
@@ -31,8 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/lblPay"
         android:layout_centerHorizontal="true"
-        android:text="Silahkan melakukan pembayaran"
-        android:textSize="16sp" />
+        android:text="Silahkan bayar tagihan anda di tempat booking anda"
+        android:textSize="14sp" />
 
     <LinearLayout
         android:id="@+id/llUser"
@@ -56,7 +56,7 @@
 
 
             <TextView
-                android:id="@+id/tvName"
+                android:id="@+id/tvNameCart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -80,7 +80,7 @@
 
 
             <TextView
-                android:id="@+id/tvPhone"
+                android:id="@+id/tvPhoneCart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -120,7 +120,7 @@
 
 
             <TextView
-                android:id="@+id/tvLapanganName"
+                android:id="@+id/tvLapanganNameCart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -144,38 +144,11 @@
 
 
             <TextView
-                android:id="@+id/tvPlace"
+                android:id="@+id/tvPlaceCart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:text="Tempat"
-                android:textColor="@color/light_black"
-                android:textSize="16sp" />
-        </RelativeLayout>
-
-        <!--Alamat-->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp">
-
-            <TextView
-                android:id="@+id/lblALAMAT"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Alamat                  : "
-                android:textColor="@color/light_black"
-                android:textSize="16sp" />
-
-
-            <TextView
-                android:id="@+id/tvPlaceAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_toEndOf="@id/lblALAMAT"
-                android:text="Alamat"
-                android:gravity="end"
+                android:text="TempatCart"
                 android:textColor="@color/light_black"
                 android:textSize="16sp" />
         </RelativeLayout>
@@ -194,7 +167,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/tvTime"
+                android:id="@+id/tvTimeCart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -203,59 +176,11 @@
                 android:textSize="16sp" />
         </RelativeLayout>
 
-        <!--Harga-->
+        <!--nama lapangan -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Harga                    : "
-                android:textColor="@color/light_black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/lblRp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rp.   "
-                android:layout_toStartOf="@id/tvPriceTotal"
-                android:textColor="@color/light_black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tvPriceTotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:text="XXXXXXXX"
-                android:textColor="@color/light_black"
-                android:textSize="16sp" />
-        </RelativeLayout>
-
-    </LinearLayout>
-
-    <View
-        android:id="@+id/vBottom"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_below="@id/llBooking"
-        android:background="@color/grey"
-        android:layout_marginTop="20dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/vBottom"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical">
-
-        <!--nama lapangan -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -265,7 +190,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/tvExTime"
+                android:id="@+id/tvExTimeCart"
                 android:layout_width="wrap_content"
                 android:gravity="center"
                 android:layout_height="wrap_content"
@@ -306,12 +231,12 @@
                 android:layout_height="wrap_content"
                 android:text="Rp.   "
                 android:textStyle="bold"
-                android:layout_toStartOf="@id/tvTotal"
+                android:layout_toStartOf="@id/tvTotalCart"
                 android:textColor="@color/light_black"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/tvTotal"
+                android:id="@+id/tvTotalCart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -323,51 +248,24 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <View
+        android:id="@+id/vBottom"
         android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@id/llBooking"
+        android:background="@color/grey"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:text="Pending"
+        android:layout_below="@id/vBottom"
+        android:layout_marginTop="10dp"
+        android:textSize="24sp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="italic|bold"
+        android:textColor="@color/blue"/>
 
-        <Button
-            android:id="@+id/btnPayCOD"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:layout_weight="1"
-            android:background="@color/light_black"
-            android:text="COD"
-            android:textAllCaps="false"
-            android:textColor="@color/white" />
 
-        <Button
-            android:id="@+id/btnPayOnline"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:layout_weight="1"
-            android:background="#2CFF50"
-            android:text="Bayar Online"
-            android:textAllCaps="false"
-            android:textColor="@color/light_black" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/llEmpty"
-        android:layout_width="match_parent"
-        android:layout_below="@id/btnBack"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:background="@color/white">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:textSize="26sp"
-            android:text="ANDA BELUM MELAKUKAN BOOKING"/>
-    </LinearLayout>
 </RelativeLayout>
